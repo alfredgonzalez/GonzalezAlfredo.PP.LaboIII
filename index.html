@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AlfredoGonzalez.PP.LaboIII</title>
+</head>
+
+<style>
+    #filas{
+            display: flex;
+            flex-direction: row;
+        }
+        .divComboFiltro{
+            display: block;
+        }
+        
+        .formABM{
+            display: flex;
+            flex-direction: column;
+        }
+        .formLinea{
+            display: flex;
+            flex-direction: row;
+            justify-content: space-around;
+            align-items: center;
+        }
+        
+</style>
+<body>
+    <div id="divConteiner" class="container">
+        <h2 class="text-black">Form Datos</h2>
+        <div>
+        
+        <div class="divComboFiltro">
+            <label>Filtrar por: </label>
+            <select id="comboFiltroPromedio" class="comboFiltro" aria-label="Filtrar por:">
+              <option value="Heroe" selected>Heroe</option>
+              <option value="Villano">Villano</option>
+              <option value="Todos">Todos</option>
+            </select>
+        </div>
+        </div>
+        <div>
+        <label for="edadPromedio">Calcular Edad Promedio: </label>
+        <input type="text" class="edadPromedio">
+        <button id="btnCalcularPromedio">Calcular</button>
+        </div>
+        <label>Mostrar Columnas:</label>
+        <div id="filas" class="row">
+          <div class="col">
+            <input type="checkbox" class="form-check-input selector checkboxes" value="ID" name="checkboxID"  checked>
+            <label for="checkboxID">ID</label>
+          </div>
+          <div class="col">
+            <input type="checkbox" class="form-check-input selector checkboxes" value="nombre" name="checkboxNombre"  checked>
+            <label for="checkboxNombre">Nombre</label>
+          </div>
+          <div class="col">
+            <input type="checkbox" class="form-check-input selector checkboxes" value="Apellido" name="checkboxApellido"  checked>
+            <label for="checkboxApellido">Apellido</label>
+          </div>
+          <div class="col">
+            <input type="checkbox" class="form-check-input selector checkboxes" value="edad" name="checkboxEdad"  checked>
+            <label for="checkboxEdad">Edad</label>
+          </div>
+          <div class="col">
+            <input type="checkbox" class="form-check-input selector checkboxes" value="alterEgo" name="checkboxAlterEgo"  checked>
+            <label for="checkboxAlterEgo">AlterEgo</label>
+          </div>
+          <div class="col">
+            <input type="checkbox" class="form-check-input selector checkboxes" value="ciudad" name="checkboxCiudad"  checked>
+            <label for="checkboxCiudad">Ciudad</label>
+          </div>
+          
+          <div class="col">
+            <input type="checkbox" class="form-check-input selector checkboxes" value="publicado" name="checkboxPublicado"  checked>
+            <label for="checkboxPublicado">Publicado</label>
+          </div>
+          <div class="col">
+            <input type="checkbox" class="form-check-input selector checkboxes" value="enemigo" name="checkboxEnemigo"  checked>
+            <label for="checkboxEnemigo">Enemigo</label>
+          </div>
+          <div class="col">
+            <input type="checkbox" class="form-check-input selector checkboxes" value="robos" name="checkboxRobos"  checked>
+            <label for="checkboxRobos">Robos</label>
+          </div>
+          <div class="col">
+            <input type="checkbox" class="form-check-input selector checkboxes" value="asesinatos" name="checkboxAsesinatos"  checked>
+            <label for="checkboxAsesinatos">Asesinatos</label>
+          </div>
+            </div>
+            <div class="cointainer">
+            <div id="table"> </div>
+    </div>
+    
+
+
+
+    <div class="divTabla"></div>
+
+
+    <div class="divFormABM">
+        <form class="formABM">
+            <div id="formLinea">
+                <label for="id">ID: </label>
+                <input type="text" id="id" name="id" required>
+            </div>
+            <div id="formLinea">
+                <label for="nombre">Nombre: </label>
+                <input type="text" id="nombre" name="nombre" required>
+            </div>
+            <div id="formLinea">
+                <label for="apellido"> Apellido: </label>
+                <input type="text" id="apellido" name="apellido" required>
+            </div>
+            <div id="formLinea">
+                <label for="edad"> Edad: </label>
+                <input type="text" id="edad" name="edad" required>
+            </div>
+            <div id="formLinea">
+                <label for="tipos"> Tipo: </label>
+                <select id="comboTipoFiltro" class="comboFiltroTipo">
+                    <option value="heroe" >Heroe</option>
+                    <option value="villano">Villano</option>
+                    <option value="todos" selected>Todos</option>
+                </select>
+            </div>
+            <div id="formLinea">
+                <label for="alterEgo"> AlterEgo: </label>
+                <input type="text" id="alterEgo" name="alterEgo" required>
+            </div>
+            <div id="formLinea">
+                <label for="ciudad"> Ciudad: </label>
+                <input type="text" id="ciudad" name="ciudad" required>
+            </div>
+            <div id="formLinea">
+                <label for="publicado"> Publicado: </label>
+                <input type="text" id="publicado" name="publicado" required>
+            </div>
+            <div id="formLinea">
+                <label for="enemigo"> Enemigo: </label>
+                <input type="text" id="enemigo" name="enemigo" required>
+            </div>
+            <div id="formLinea">
+                <label for="robos"> Robos: </label>
+                <input type="text" id="robos" name="robos" required>
+            </div>
+            <div id="formLinea">
+                <label for="asesinatos"> Asesinatos: </label>
+                <input type="text" id="asesinatos" name="asesinatos" required>
+            </div>
+            </div>
+
+        </form>
+    </div>
+    <script>
+        class Persona{
+            constructor(id, nombre, apellido, edad) {
+            if (!Number.isInteger(id) || id <= 0) {
+            throw new Error("El ID debe ser no nulo.");
+            }
+            if (typeof nombre !== "string" || !nombre) {
+            throw new Error("El nombre debe ser no nulo.");
+            }
+            if (typeof apellido !== "string" || !apellido) {
+            throw new Error("El apellido debe ser no nulo.");
+            }
+            if (!Number.isInteger(edad)) {
+            throw new Error("La edad debe ser un numero entero");
+            }
+            this.id = id;
+            this.nombre = nombre;
+            this.apellido = apellido;
+            this.edad = edad;
+        }
+    }
+
+    class Heroe extends Persona{
+        constructor(id, nombre, apellido, edad, alterEgo, ciudad, publicado){
+            super(id,nombre,apellido,edad);
+            if (typeof alterEgo !== "string" || !alterEgo) {
+            throw new Error("El alterEgo debe ser no nulo");
+            }
+            if (typeof ciudad !== "string" || !ciudad) {
+            throw new Error("La ciudad debe ser no nula");
+            }
+            if(typeof publicado !== 'number' || publicado < 1940){
+                throw new Error("El publicado debe ser mayor a 1940");
+            }
+            this.alterEgo = alterEgo;
+            this.ciudad = ciudad;
+            this.publicado = publicado;
+        }
+    }
+
+    class Villano extends Persona{
+        constructor(id, nombre, apellido, edad, enemigo, robos, asesinatos){
+            super(id, nombre, apellido, edad);
+            if (typeof enemigo !== "string" || !enemigo) {
+            throw new Error("El enemigo debe ser no nulo");
+            }
+            if (typeof robos !== 'number' || robos < 0) {
+            throw new Error("los robos deben ser mayor a 0");
+            }
+            if (typeof asesinatos !== 'number' || asesinatos < 0) {
+            throw new Error("los asesinatos deben ser mayor a 0");
+            }
+            this.enemigo = enemigo;
+            this.robos = robos;
+            this.asesinatos = asesinatos;
+        }
+    }
+
+    const datos = '[{"id":1, "nombre":"Clark", "apellido":"Kent", "edad":45, "alterego":"Superman", "ciudad":"Metropolis", "publicado":2002},{"id":2, "nombre":"Bruce", "apellido":"Wayne", "edad":35, "alterego":"Batman", "ciudad":"Gotica", "publicado":20012},{"id":3, "nombre":"Bart", "apellido":"Alen", "edad":30, "alterego":"Flash", "ciudad":"Central", "publicado":2017},{"id":4, "nombre":"Lex", "apellido":"Luthor", "edad":18, "enemigo":"Superman", "robos":500, "asesinatos":7},{"id":5, "nombre":"Harvey", "apellido":"Dent", "edad":20, "enemigo":"Batman", "robos":750, "asesinatos":2},{"id":666, "nombre":"Celina", "apellido":"kyle", "edad":23, "enemigo":"Batman", "robos":25, "asesinatos":1}]';
+
+    const objetos = JSON.parse(datos);
+
+    const personas = [];
+
+    const $divTabla = document.querySelector(".divTabla");
+
+    const $filtroControl = document.querySelector("#comboFiltroPromedio");
+
+    const $checkboxes = document.querySelectorAll(".checkboxes");
+
+    let keysListaFiltrada = ["id"];
+
+    
+
+    objetos.forEach(obj => {
+    if (obj.alterego) {
+        personas.push(new Heroe(obj.id, obj.nombre, obj.apellido, obj.edad, obj.alterego, obj.ciudad, obj.publicado));
+    } else if (obj.enemigo) {
+        personas.push(new Villano(obj.id, obj.nombre, obj.apellido, obj.edad, obj.enemigo, obj.robos, obj.asesinatos));
+    }
+    });
+
+        function crearCabecera(row) {
+        const cabecera = document.createElement("thead"),
+        tr = document.createElement("tr");
+
+        const headers = personas.reduce((acc, persona) => {
+        Object.keys(persona).forEach(key => {
+        if (!acc.includes(key)) {
+             acc.push(key);
+            }
+        });
+        return acc;
+        }, []);
+        headers.forEach(element => {
+            const th = document.createElement("th");
+            th.textContent = element;
+            tr.appendChild(th);
+        });
+
+        cabecera.appendChild(tr);
+        return cabecera;
+    }
+
+    function crearCuerpo(data) {
+        const cuerpo = document.createElement("tbody");
+
+        data.forEach(function(dataObject) {
+        var row = document.createElement('tr');
+        var values = [dataObject.id, dataObject.nombre, dataObject.apellido,dataObject.edad, dataObject.alterEgo, dataObject.ciudad, dataObject.publicado, dataObject.enemigo ,dataObject.robos, dataObject.asesinatos];
+        values.forEach(function(value) {
+            if(value == null)
+            {
+                value = '--';
+            }
+            var cell = document.createElement('td');
+            var textNode = document.createTextNode(value);
+            cell.appendChild(textNode);
+            row.appendChild(cell);
+            
+        });
+        cuerpo.appendChild(row);
+        });
+        return cuerpo;
+    }
+
+    function crearTabla(data) {
+
+        const tabla = document.createElement("table");
+        tabla.classList.add("centrar");
+        tabla.appendChild(crearCabecera(data));
+        tabla.appendChild(crearCuerpo(data));
+
+        return tabla;
+    }
+
+    function actualizarTabla(divTabla, data) {
+        while (divTabla.hasChildNodes()) {
+            divTabla.removeChild(divTabla.firstChild);
+        }
+        divTabla.appendChild(crearTabla(data));
+    }
+
+
+    function cargarCheckboxes(checkboxes)
+    {
+        const cargarCheckboxes = (checkboxes) =>{
+        const keysListaFiltrada = ["id"];
+        for (var item of checkboxes) {
+            if (item.checked)keysListaFiltrada.push(item.value);
+        }
+        return keysListaFiltrada;
+    }
+    }
+   
+    $filtroControl.addEventListener("change", (e) => {
+    let lista = filtrarLista(personas, e.target.value);
+    actualizarTabla($divTabla, lista);
+    });
+
+
+    actualizarTabla($divTabla,personas);
+    </script>
+</body>
+</html>
