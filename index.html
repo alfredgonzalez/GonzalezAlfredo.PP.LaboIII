@@ -140,7 +140,6 @@
         margin-top: 4px;
     }
     </style>
-</head>
 <body>
     <div class="container">
         <h2>Form Datos</h2>
@@ -344,10 +343,10 @@
                   <small></small>
                 </div>
             </div>
-            <button class="btnAlta">Alta</button>
-            <button class="btnBaja">Baja</button>
-            <button class="btnModificacion">Modificacion</button>
-            <button class="btnCancelar">Cancelar</button>
+            <button id="btnAlta">Alta</button>
+            <button id="btnBaja">Baja</button>
+            <button id="btnModificacion">Modificacion</button>
+            <button id="btnCancelar">Cancelar</button>
             <small id="mensajeEnviar"></small>
             
           </div>
@@ -606,6 +605,7 @@
                 $divTabla.removeChild($divTabla.firstChild);
             }
             $divTabla.appendChild(crearTabla(personas));
+
             $("txtid").disabled = 'true';
         }
 
@@ -791,7 +791,6 @@
         $btnModificar.addEventListener("click", (e)=>{
             var persona = personas.find((element) => element.id == idSeleccionado);
             modificarPersona($formulario, persona);
-            personas.push(persona);
             actualizarTabla($divTabla, personas);
         })
     </script>
